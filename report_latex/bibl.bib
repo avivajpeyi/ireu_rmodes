@@ -1,0 +1,266 @@
+
+@article{:/content/aip/journal/cip/9/5/10.1063/1.168549,
+   author = {Yalçinkaya, Tolga and Lai, Ying‐Cheng},
+   title = {Chaotic Scattering},
+   journal = {Computers in Physics},
+   year = {1995},
+   volume = {9},
+   number = {5}, 
+   pages = {511-539},
+   url = {http://scitation.aip.org/content/aip/journal/cip/9/5/10.1063/1.168549},
+   doi = {http://dx.doi.org/10.1063/1.168549}, 
+   annote = {
+  This article, co-authored by Lai, a theoretical physicist who wrote `Transient Chaos: complex dynamics in finite time scales', a principle book for chaos theorists, addresses scattering using the Gasprd-Rice model. It discusses the origin of chaos in scattering experiments, and walks through how the Gaspard-Rice model displays chaotic characteristics. After defining relevant terms for the study, such as the scattering function and the various parameters, the paper also gives specific details on the variables. It states how the scattering angle is defined counterclockwise, in relation to the initial path of a particle which comes from negative infinity. Additionally, it elaborates on how the delay time is defined not only as the time the particle spends in the scattering region, but also the time the particle spends within a chosen distance from the center of the scattering region. These specific details are very important, as it helps understand how the rules should be defined for my simulation, which deals with similar parameters and variables.
+  The paper continues discussing the Gaspard-Rice scattering system, and provides examples of input parameters which result with systematic and chaotic behaviors. It pointed out that if the data for scattering angles and impact parameters are plotted on a graph, then we see plots with smooth and oscillating parts, which, when expanded, also show smooth and oscillating parts. The paper asserted that this fractal nature of the scattering function can be studied by computing fractal dimensions. The paper then discussed two methods for calculating fractal dimensions: box counting and an uncertainty dimensions method. It argued that the latter is easier to compute, hence, the uncertainty dimensions method is what is used in my system. 
+  Furthermore, the paper discusses various suggestions for future work, which is where I obtained the idea to create a simulation with four potential hills rather than three solid disks, as done in the Gaspard-Rice scattering. },
+}
+
+@book{pang2006introduction,
+  title={An introduction to computational physics},
+  author={Pang, Tao},
+  year={2006},
+  publisher={Cambridge University Press},
+  annote = {This book, used at Cambridge for their Computational Physics course is aimed at first year graduate students. It is highly accessible, and gives detailed explanations of steps that need to be taken during the implementation of physics simulations in JavaScript. It provides many simple tutorials. It also has a section on animating trajectories. This is useful as it acts as a direct reference for the implementation of the chaotic scattering simulation, which has animations of the particle scattering after passing through the region with hills. It also provides useful information to program physics simulations, such as the various techniques by which the program correctness can be verified with energy, and angular momentum held constant. },
+}
+
+
+@article{bettis1979runge,
+  title={Runge-Kutta algorithms for oscillatory problems},
+  author={Bettis, DG},
+  journal={Zeitschrift f{\"u}r angewandte Mathematik und Physik ZAMP},
+  volume={30},
+  number={4},
+  pages={699--704},
+  year={1979},
+  publisher={Springer},
+  annote = {This paper presents a derivation for the second order Runge-Kutta method, after which it gives a detailed explanation on how the method works. It then proposes various modified versions of the Runge-Kutta algorithms that may be more accurate than the normal four stage Runge-Kutta algorithm. We know that on the plots of the scattering angle against the impact parameter, there are certain speckled regions. When the horizontal scale for the speckled regions are enlarged, the speckled regions still remain. Even further enlarging of those speckled regions does not resolve the function, suggesting the fractal nature of these graphs. Hence, as I am studying this fractal nature, I need high resolution graphs, which I can enlarge with ease. These can only be created with very accurate integration, and this paper provides a potential path by which the integration accuracy can be increased. },
+}
+
+@article{ott1993chaotic,
+  title={Chaotic scattering: An introduction},
+  author={Ott, Edward and T{\'e}l, Tam{\'a}s},
+  journal={Chaos: An Interdisciplinary Journal of Nonlinear Science},
+  volume={3},
+  number={4},
+  pages={417--426},
+  year={1993},
+  publisher={AIP Publishing},
+  annote = {Although published two decades ago, this article, citied by more than one hundred and sixty different books and journals, provides a introduction to the general topic of chaotic scattering. It describes elementary background information, including the details on the inputs and outputs of the system, such as the impact parameter, and scattering angle. The article also discusses the formation of the fractals in the plots of the impact parameter against the scattering angle. It provides various examples of how chaos theory is used in various academic fields, ranging from celestial mechanics to models of chemical reactions. Even though it does not provide any clear algorithms that can be implemented in a simulation, it gives a very thorough introductory understanding of chaotic scattering. Hence, it is helpful in providing the initial theory that will be used in the theory section of the paper. },
+}
+
+@article{:/content/aip/journal/cip/4/2/10.1063/1.4822901,
+   author = "Gould, Harvey and Tobochnik, Jan",
+   title = "More on Fractals and Chaos: Multifractals",
+   journal = "Computers in Physics",
+   year = "1990",
+   volume = "4",
+   number = "2", 
+   pages = "202-207",
+   url = "http://scitation.aip.org/content/aip/journal/cip/4/2/10.1063/1.4822901",
+   annote = {This paper discusses the trajectories of chaotic systems being fractal objects known as strange attractors, and the connections between fractals and chaos. It begins with introducing objects known as `multi fractals', fractal systems with a continuous spectrum of components. It then goes on to discuss the concept of fractal dimensions, and provides formulae to calculate it. The paper then discusses Koch curves, and applies its concepts and formulae for multi fractals on an instance of a Koch curve. Finally, it extends the multi fractal analysis to the case where a fractal is produced by the strange attractor of a dynamical system. This portion where it discusses the statistical description of a fractal object for dynamic systems is helpful as it provides a method to analyse the fractals that form in chaotic scattering graphs. The paper then continues by discussing deeper analysis of fractals with probability distributions, something that may be interesting to look into with chaotic scattering if time permits.},
+}
+
+@book{jose1998classical,
+  title={Classical dynamics: a contemporary approach},
+  author={Jos{\'e}, Jorge V and Saletan, Eugene J},
+  year={1998},
+  publisher={Cambridge University Press},
+  annote = {Anagnostopoulos, the author of Computational Physics, Vol I, referenced this book in his work, and claimed it to be ``A great book on Classical Mechanics''. Although this book is aimed at graduate physics students, there is a significant amount of information on non-linear dynamic systems exhibiting chaotic behaviour that has been explained in a comprehensive way. Additionally, the scattering of a charge by a magnetic dipole with potential hills is discussed. The potentials are set up as circularly symmetric potential hills in a plane. Equations to map such potentials are also provided here (169). This is helpful in understanding how a region of four circularly symmetric potential hills can be set up in a plane, which is what my simulation requires. The article then proceeds to discuss the functional relationship between the scattering angle and initial input trajectory for a fixed velocity. It then highlights that chaotic scattering occurs only when a given particle's energy is lower than the maximum potential energy of the potential hills. Then, it elaborates on different patterns that emerge between the chaotic and non-chaotic scattering. This is useful as it provides a framework on how to structure my system, specifically for chaotic scattering.},
+}
+
+
+
+
+@book{anagnostopoulos2014computational,
+  title={Computational Physics, Vol I: A Practical Introduction to Computational Physics and Scientific Computing},
+  author={Anagnostopoulos, Konstantinos N},
+  volume={1},
+  year={2014},
+  publisher={Konstantinos Anagnostopoulos},
+  annote = {This book, used by Carnegie Mellon in its Introduction to Computational Physics course, and written by a physics professor at the  National Technical University of Athens, explores alternative numerical methods for the formulation of physical problems for machine computation. The main usefulness of this book comes from its chapter on the motion of a particle, where the numerical integration of Newton's equations is discussed. The Euler method for solving the differentials is explained with an example of a simulation demonstrating the movement of a pendulum. Then the fourth order Runge-Kutta algorithm is introduced (205). The chapter elaborates on how the Runge-Kutta algorithm, in place of Euler's, increases the integration accuracy, while asserting that integration accuracy can be verified by studying the energy of the system. 
+	Additionally, the chapter on planar motion discusses the movement of a particle traversing across a plane under the influence of a dynamic field. A dynamic field is a physical quantity that has a value for each point in space and time, for example, a magnetic field or gravitational field. Although this mainly looks at two dimensional planetary motion simulations, and Rutherford scattering, the section is helpful in providing a simplified version of the fourth order Runge-Kutta algorithm for planar motion equations in the presence of a dynamic field, which exists in my system as well (241). The implementation of the algorithm is also provided (257). This is helpful as my simulation also uses this algorithm, and hence, having an example of how the algorithm is used in a program helps me avoid errors.},
+}
+
+
+%% This BibTeX bibliography file was created using BibDesk.
+%% http://bibdesk.sourceforge.net/
+
+
+%% Created for Avi at 2016-09-21 02:19:28 -0400 
+
+
+%% Saved with string encoding Unicode (UTF-8) 
+
+
+
+
+
+@online{pyCBCdata,
+	Date-Added = {2016-09-21 06:17:00 +0000},
+	Date-Modified = {2016-09-21 06:19:12 +0000},
+	Title = {{P}y{CBC} {GW150914} {S}earch {R}esult {C}1 {D}ata},
+	url{https://sugar-jobs.phy.syr.edu/~tjmassin/gw150914/gw150914-16day-c01-v1.3.4/}
+	note = {Available online at \url{https://sugar-jobs.phy.syr.edu/~tjmassin/gw150914/gw150914-16day-c01-v1.3.4/} , verion 1.0    }}
+
+
+
+@url{hardwareInj,
+	Author = {LIGO Scientific Collaboration},
+	Date-Added = {2016-07-26 18:16:08 +0000},
+	Date-Modified = {2016-07-26 18:17:41 +0000},
+	Rating = {4},
+	Title = {O1 Hardware Injections},
+	Url = {https://www.lsc-group.phys.uwm.edu/ligovirgo/cbcnote/DQ/hwinj/O1},
+	Bdsk-Url-1 = {https://www.lsc-group.phys.uwm.edu/ligovirgo/cbcnote/DQ/hwinj/O1}}
+
+@article{ligo2016binary,
+	Author = {LIGO Scientific Collaboration and Virgo Collaboration and others},
+	Date-Added = {2016-07-25 19:24:31 +0000},
+	Date-Modified = {2016-07-25 19:24:31 +0000},
+	Journal = {arXiv preprint arXiv:1606.04856},
+	Title = {Binary Black Hole Mergers in the first Advanced LIGO Observing Run},
+	Year = {2016}}
+
+@article{abbott2016observing,
+	Author = {Abbott, BP and Abbott, R and Abbott, TD and Abernathy, MR and Acernese, F and Ackley, K and Adams, C and Adams, T and Addesso, P and Adhikari, RX and others},
+	Date-Added = {2016-07-05 20:10:33 +0000},
+	Date-Modified = {2016-07-05 20:10:33 +0000},
+	Journal = {Physical Review D},
+	Number = {12},
+	Pages = {122004},
+	Publisher = {APS},
+	Title = {Observing gravitational-wave transient GW150914 with minimal assumptions},
+	Volume = {93},
+	Year = {2016}}
+
+@article{ligo2016properties,
+	Author = {LIGO Scientific Collaboration and Virgo Collaboration and others},
+	Date-Added = {2016-07-05 20:05:54 +0000},
+	Date-Modified = {2016-07-05 20:05:54 +0000},
+	Journal = {arXiv preprint arXiv:1602.03840},
+	Title = {Properties of the binary black hole merger GW150914},
+	Year = {2016}}
+
+@article{BaeStats,
+	Author = {Veitch, John and Vecchio, Alberto},
+	Date-Added = {2016-05-02 00:36:29 +0000},
+	Date-Modified = {2016-05-02 00:36:48 +0000},
+	Journal = {Physical Review D},
+	Number = {6},
+	Pages = {062003},
+	Publisher = {APS},
+	Title = {Bayesian coherent analysis of in-spiral gravitational wave signals with a detector network},
+	Volume = {81},
+	Year = {2010}}
+
+@article{Enia,
+	Author = {Kanner, Jonah B and Littenberg, Tyson B and Cornish, Neil and Millhouse, Meg and Xhakaj, Enia and Salemi, Francesco and Drago, Marco and Vedovato, Gabriele and Klimenko, Sergey},
+	Date-Added = {2016-05-02 00:33:39 +0000},
+	Date-Modified = {2016-05-02 00:34:27 +0000},
+	Journal = {Physical Review D},
+	Number = {2},
+	Pages = {022002},
+	Publisher = {APS},
+	Title = {Leveraging waveform complexity for confident detection of gravitational waves},
+	Volume = {93},
+	Year = {2016}}
+
+@phdthesis{RSmith,
+	Author = {Smith, Rory James Edwin},
+	Date-Added = {2016-05-02 00:32:19 +0000},
+	Date-Modified = {2016-05-02 03:28:46 +0000},
+	School = {University of Birmingham},
+	Title = {Gravitational-wave astronomy with coalescing compact binaries: detection and parameter estimation with advanced detectors},
+	Year = {2013}}
+
+@article{NumDetections,
+	Author = {Abadie, Jea and Abbott, BP and Abbott, Richard and Abernathy, Matthew and Accadia, Timothee and Acernese, Fausto and Adams, Carl and Adhikari, Rana and Ajith, Parameswaran and Allen, Bruce and others},
+	Date-Added = {2016-05-02 00:30:42 +0000},
+	Date-Modified = {2016-05-02 00:31:07 +0000},
+	Journal = {Classical and Quantum Gravity},
+	Number = {17},
+	Pages = {173001},
+	Publisher = {IOP Publishing},
+	Title = {Predictions for the rates of compact binary coalescences observable by ground-based gravitational-wave detectors},
+	Volume = {27},
+	Year = {2010}}
+
+@article{DetectionPaper,
+	Author = {Abbott, BP and Abbott, R and Abbott, TD and Abernathy, MR and Acernese, F and Ackley, K and Adams, C and Adams, T and Addesso, P and Adhikari, RX and others},
+	Date-Added = {2016-04-23 19:23:46 +0000},
+	Date-Modified = {2016-04-23 19:25:22 +0000},
+	Doi = {10.1103/PhysRevLett.116.061102},
+	Journal = {Physical Review Letters},
+	Number = {6},
+	Title = {Observation of Gravitational Waves from a Binary Black Hole Merger},
+	Volume = {116},
+	Year = {2016},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1103/PhysRevLett.116.061102}}
+
+@article{BaeStats,
+	Author = {Veitch, John and Vecchio, Alberto},
+	Date-Added = {2016-05-02 00:36:29 +0000},
+	Date-Modified = {2016-05-02 00:36:48 +0000},
+	Journal = {Physical Review D},
+	Number = {6},
+	Pages = {062003},
+	Publisher = {APS},
+	Title = {Bayesian coherent analysis of in-spiral gravitational wave signals with a detector network},
+	Volume = {81},
+	Year = {2010}}
+
+@article{lindblom2008model,
+	Author = {Lindblom, Lee and Owen, Benjamin J and Brown, Duncan A},
+	Journal = {Physical Review D},
+	Number = {12},
+	Pages = {124020},
+	Publisher = {APS},
+	Title = {Model waveform accuracy standards for gravitational wave data analysis},
+	Volume = {78},
+	Year = {2008}}
+
+
+@article{jones2002gravitational,
+  title={Gravitational waves from rotating strained neutron stars},
+  author={Jones, DI},
+  journal={Classical and Quantum Gravity},
+  volume={19},
+  number={7},
+  pages={1255},
+  year={2002},
+  publisher={IOP Publishing}
+}
+
+
+@article{meadors2017searches,
+  title={Searches for continuous gravitational waves from Scorpius X-1 and XTE J1751-305 in LIGO’s sixth science run},
+  author={Meadors, Grant David and Goetz, Evan and Riles, Keith and Creighton, Teviet and Robinet, Florent},
+  journal={Physical Review D},
+  volume={95},
+  number={4},
+  pages={042005},
+  year={2017},
+  publisher={APS}
+}
+
+
+
+@article{rmodeEqs,
+  title={Gravitational radiation from the r-mode instability},
+  author={Owen, Benjamin J and Lindblom, Lee},
+  journal={Classical and Quantum Gravity},
+  volume={19},
+  number={7},
+  pages={1247},
+  year={2002},
+  publisher={IOP Publishing}
+}
+
+
+@book{2dFFTpaper,
+  title={Fast Fourier transform and convolution algorithms},
+  author={Nussbaumer, Henri J},
+  volume={2},
+  year={2012},
+  publisher={Springer Science \& Business Media}
+}

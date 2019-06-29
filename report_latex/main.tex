@@ -1,0 +1,421 @@
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.1 distribution.
+%   Version 4.1r of REVTeX, August 2010
+%
+%   Copyright (c) 2009, 2010 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.1
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[%
+reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%showpacs,preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+amsmath,amssymb,
+aps,
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{revtex4-1}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+\begin{document}
+	
+	%\preprint{APS/123-QED}
+	
+	\title{Improving All-Sky Searches for Long Transients}% Force line breaks with \\
+	%\thanks{A footnote to the article title}%
+	
+	% \author{Avi Vajpeyi}
+	%  \altaffiliation[Also at ]{Physics Department,The College of Wooster.}%Lines break automatically or can be forced with \\
+	% \author{Second Author}%
+	%  \email{Second.Author@institution.edu}
+	% \affiliation{%
+	%  Authors' institution and/or address\\
+	%  This line break forced with \textbackslash\textbackslash
+	% }%
+	
+	% \collaboration{MUSO Collaboration}%\noaffiliation
+	
+	\author{Avi Vajpeyi}
+	\email{avi.vajpeyi@gmail.com}
+	\affiliation{The College of Wooster}%
+	
+	\author{Pia Astone}
+	\email{pia.astone@roma1.infn.it}
+	\affiliation{The Sapienza University of Rome}%
+	
+	\author{Andrew Miller}
+	\email{andrew.miller@roma1.infn.it}
+	\affiliation{The Sapienza University of Rome}%
+	
+	% \collaboration{CLEO Collaboration}%\noaffiliation
+	
+	\date{\today}
+	
+	\begin{abstract}
+		A challenge with gravitational wave interferometry has been detecting signals in the presence of noise and glitches. One method to make signals stand out in the presence of noise involves filtering the data suspected of containing a signal. In this paper we present an investigation of filtering a particular type of gravitational waves known as r-modes. We discovered that the filtering is effective if the signal being filtered has the same shape as the signal that was used to generate the filter. 
+	\end{abstract}
+	
+	
+	\maketitle
+	
+	
+	
+	\section{Introduction}
+	
+	% \cite{DetectionPaper} = 1
+	% \cite{Enia} = 2
+	% \cite{RSmith} = 3
+	% \cite{ligo2016properties} = 4
+	
+	
+	
+	On September 14th, 2015, The Laser Interferometer Gravitational-Wave Observatories (LIGO) detected the first gravitational wave (GW150914) with a large Signal-to-Noise Ratio (SNR) \cite{DetectionPaper}. The source of GW150914 was a binary black hole in-spiral. Since this detection, there have been two other gravitational wave detections from binary black hole systems. These detections have proven the existence of BBH systems, and we have learned much from them.
+	
+	Another promising candidate for producing gravitational wave (GW) signals detectable by the laser interferometer detectors LIGO and Virgo (a gravitational wave observatory based in Italy) are spinning neutron stars. These astronomical bodies, expected to be almost perfectly spherical may generate continuous gravitational waves if they are not perfectly symmetric around their rotation axis.   It is hypothesised that even a small asymmetry due to a surface bump can induce the emission continuous GWs as the star spins \cite{jones2002gravitational}. This bump can be as small as that with a height of $10^{-7} \times R$ where $R$ is the radius of the star (analysis of the O1 data has shown that if a bump is present on the Crab pulsar, it can be no larger than 10 cm in height).
+	
+	The majority of neutron stars that have been found so far have been located due to their electromagnetic pulsations which sweep across Earth periodically. This has lead to the discovery of less than $0.003\%$ of the expected number of neutron stars in the Milky Way \cite{meadors2017searches}. Gravitational waves may be the key to locating these astronomical bodies, hidden in space. 
+	
+	The goal of this research is to a technique of improving the detection of a particular type of neutron star gravitational wave emission (r-mode gravitational wave forms). The method involves the application of filters to power spectrum data (the fast Fourier transform or FFT of the laser interferometer strain data that we simulate). 
+	%The second method is a study of convolutional neural networks and their application on detecting and parameter estimating r-mode gravitational waves from peak-map simulated data (peak-maps are described in Section~\ref{}).
+	
+	
+	
+	
+	\section{Background}
+	
+	In 1974 Hulse and Taylor made the first detection of a binary pulsar - a system with two orbiting neutron stars of which one was a pulsar. By studying the electromagnetic radiation from the pulsar, the masses and other information about the neutron stars were obtained. Hulse and Taylor also recorded that the system's orbital period was gradually shortening. It was deduced that this decrease in orbital period was due to the loss in orbital energy in the form of gravitational radiation. The energy suspected to be converted into gravitational radiation matched the predictions from general relativity. This provided us with indirect evidence that gravitational waves could be exist. 
+	
+	
+	\subsection{Ground Based Laser Interferometers}
+	
+	Shortly after 1974, there were many more detections of pulsars and the search for a direct gravitational wave detection was initiated. None of the first generation gravitational wave detectors (such as the bar detectors) were successful in discovering a gravitational wave. This led to the construction of several kilometre-scale interferometers as gravitational wave detectors in the 1990s. For several years, the detectors were adjusted to be more sensitive as they were unable to detect a gravitational wave. Finally, when the LIGO detectors were made to be sensitive to perturbations in the order of $10^{−18}$ m, the first gravitational wave detection was made.
+	
+	Each of the LIGO and VIRGO observatories uses modified Michelson Interferometer to detect the presence of a gravitational wave by measuring the difference in the length of the orthogonal arms of the observatory \cite{DetectionPaper}. To determine if data recorded by LIGO stores gravitational wave information, the data is processed with two search techniques. One search looks for generic transient waveforms (unmodeled or unexpected waveforms). The second is a match filtered search that compares the data with templates of waveforms generated by general relativity (see \cite{ligo2016properties} for information on the searches). Both the search processes are made challenging due to the background noise present in the data (due to apparatus defects, seismic activity, etc)\cite{RSmith}. Analysis groups implement a detection statistic to rank the strains in the recorded data according to the likelihood that the strain resulted from a gravitational wave or noise. Only strains with a high likelihood can be considered to be due to gravitational waves and are called candidate events (refer to \cite{DetectionPaper}). Each candidate event is processed with several searches corresponding to different types of gravitational wave. The main categories of gravitational waves are continuous GWs, compact binary in-spiral GWs, stochastic GWs and burst GWs. It is hypothesised that neutron stars emit continuous GWs. 
+	
+	\subsection{Neutron Stars and Gravitational Waves}
+	\subsubsection{GW emission from Neutron Stars}
+	Gravitational waves are radiated from objects that are accelerating and have a non symmetric motion (like an expanding/contracting sphere) or a non symmetric axis of rotation (like a rotating disc with a surface defect). This asymmetry produces a quadrupole mass moment whose third time derivative is non-zero which is what is necessary for gravitational wave emission. This is analogous to the a non-zero changing dipole moment of charge required for electromagnetic wave emission. Hence, for a neutron star to emit gravitational waves, it requires a quadrupole moment that changes with time. 
+	
+	In the case of neutron stars, a non zero time derivative of the quadrupole moment is possible if the star is spherically asymmetric. However, in general it is hypothesised that rotating neutron stars which are highly dense objects will be perfectly spherical. This is believed due to the presence the strong gravitational fields of the star and its high velocity rotation. It is also hypothesised that as the star forms, there may be deformities present right after the supernova creates the neutron star. These deformities may be frozen-in the crust as the star solidifies, giving rise to bumps of a few centimeters above the surface which in turn cause the neutron star to have a spherically asymmetric surface. 
+	
+	Some other hypothesis involving how neutron stars may have non zero time derivative of the quadrupole moment are:
+	\begin{itemize}
+		\item{\textbf{Elliptical Neutron Stars:} some neutron stars may become elliptical due to the high magnetic fields around the poles of the stars. This would result in a permanent spherical asymmetric surface giving rise to the emission of gravitational waves.}
+		\item{\textbf{Accretion Disks:} if a neutron star is present near another star, then it may start pulling the other star's matter towards its surface, forming an accretion disk. In this process, the system would have a time varying quadrupole mass moment, and hence the system would be emitting gravitational waves.}
+		\item{\textbf{Neutron Star Binary System}: a system of two neutron stars orbiting each other and slowly gravitating towards each other. This motion provides the quadrupole mass moment which in turn leads to the emission of gravitational waves. This is the kind of system which provided us with the proof of existence of gravitational waves. }
+	\end{itemize}
+	
+	In all these potential gravitational wave sources presented above, the emission of the gravitational waves lasts for long durations. Hence these gravitational waves are known as continuous gravitational waves. These are different from the other types of gravitational waves discussed earlier such as the burst and in-spiral as they are much shorter in duration. There is a subclass of continuous gravitational wave sources known as long-duration transients. These are gravitational waves which last in the order of weeks, but unlike the continuous gravitational waves, their amplitude goes to zero after a shorter duration. Continuous waves can go on for decades. 
+	
+	
+	\subsection{R-Modes}
+	R-mode gravitational waveforms are long-duration transients. They are the hypothesised to be emitted when the mass quadrupole of neutron stars varies rapidly. This can happen when the neutron star is just forming because the mass of the star is still accumulating, when there is some disturbance such as a comet which hits the star, or when the star's crust begins to shake due to movements below the crust. 
+	
+	These waves' frequency and amplitude evolutions ($f(t)$  and $h(t)$) are modeled using fluid perturbations \cite{rmodeEqs}. The frequency is given by
+	\begin{equation} \label{eq:rmodeFreq}
+	f(t)= f_0 \ (1 + \lambda \alpha^2 f_0^6\ (t-t_0))^{-1/6} \ \text{Hz},
+	\end{equation}
+	where $f_0$ is the source frequency of the neutron star's rotation in Hz and $\alpha$ is the saturation amplitude of a r-mode. The saturation amplitude is a measure of how much rotational energy of the neutron star goes into a
+	r-mode gravitational waves. $\lambda$ is a constant related to size and density of a neutron star and is $\lambda \approx 10^{-20}$ Hz$^{-5}$ (refer to \cite{rmodeFreq} for more details on $\lambda$). The strain amplitude can be given by 
+	\begin{equation} \label{eq:rmodeAmp}
+	h(t) = 1.8\times 10^{-24} \ \frac{20}{d} \ \bigg(\frac{f(t)}{1000}\bigg)^3 \ \alpha
+	\end{equation}
+	\noindent where $d$ is the distance of the neutron star from the detector in mega-parsecs. In this study, we use Equations~\ref{eq:rmodeFreq} and \ref{eq:rmodeAmp} to simulate data for r-modes (see Figure~\ref{fig:rmodeEvol} for an example of a simulated r-mode waveform). 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.3\textwidth]{images/general/simulatedRmode.png}
+		\caption{\textit{Simulated r-mode frequency and amplitude evolution:} plots of the $f(t)$ and $h(t)$ given by Equations~\ref{eq:rmodeFreq} and \ref{eq:rmodeAmp}. To generate this frequency and amplitude evolution we used $\alpha = 1$ and $f_0 = 1500$.}
+		\label{fig:rmodeEvol}
+	\end{figure}
+	
+	
+	
+	\section{Simulating Signal Data}
+	
+	\subsection{Time-Amplitude Plane}
+	With the frequency and amplitude evolution of the r-mode wave-forms, we can simulate a r-mode signal as seen by a gravitational wave detector by interpolating $f(t)$ and $h(t)$ and using these values to generate the phase evolution. On doing so, we can obtain the expected detector strain due to r-modes. The detector strain amplitude generated from the frequency and amplitude evolutions from Figure~\ref{fig:rmodeEvol} can be seen in the top plot of the Figure~\ref{fig:StrainAndFFT}.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.3\textwidth]{images/general/StrainToTFPS.png}
+		\caption{\textit{Simulated r-mode strain:} plots of the strain due to a r-mode and the FFT of a section of the strain.}
+		\label{fig:StrainAndFFT}
+	\end{figure}
+	
+	\subsubsection{Adding Noise to Strain Data}
+	To model the noise that we observe in gravitational wave detector strain data, we simulate Gaussian noise that we add to the strain data of our simulated strain data. Figure~\ref{fig:noiseStrainHist} contains a plot of the simulated strain of a r-mode once Gaussian noise has been added to it. Figure~\ref{fig:noiseStrainHist} also contains a plot of a histogram of the noise data, to show its Gaussian nature. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.3\textwidth]{images/general/NoiseHisto.png}
+		\caption{\textit{Simulated Gaussian noise:} plots of the strain due to a r-mode and Gaussian noise and the histogram of the noise.}
+		\label{fig:noiseStrainHist}
+	\end{figure}
+	
+	In our simulations where we add noise to signal data, we always keep the noise the same to allow the results to be reproducible. To increase the rough estimate of signal to noise ratio (SNR) of data containing signal and noise, we increase the signal's strain amplitude by an integer factor. 
+	
+	\subsubsection{Calculating a rough SNR}
+	To calculate the SNR, we separately calculate the FFT of the simulated signal strain, $f_s$, and the FFT of the simulated noise strain, $f_n$. To get the SNR from these values, we use an equation given by 
+	\begin{equation} \label{eq:inputSNR}
+	SNR = \frac{max(FFT(\text{Signal}))\ - \ mean(FFT(\text{Noise}))}{std(FFT(\text{Noise}))} \ .
+	\end{equation}
+	
+	\subsection{FFT of Strain: Time-Frequency Plane}
+	Once we simulate signal data in the time-amplitude plane (strain data), we take several fast Fourier transforms (FFTs) of sections of the strain to convert the signal to the time-frequency plane. To perform the FFTs, we section the data into equal time segments and FFT each segment separately as shown in Figure~\ref{fig:StrainAndFFT}. Each of these FFTs is then taken and arranged sequentially. This produces a plot as shown in Figure~\ref{fig:tfpsEg} where the y axis contains the frequency bands which the FFT has produced, the x axis contains each of the FFT number (or time segment) and the z axis contains each frequency's power for a given time (x axis) and frequency (y axis). The result is known as a time-frequency power spectrum (a TFPS)  of the signal. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.3\textwidth]{images/general/tfpsEg.png}
+		\caption{\textit{Simulated r-mode time-frequency power spectrum:} plot of the frequency vs time of the r-mode signal, colored by the power of the signal frequency.}
+		\label{fig:tfpsEg}
+	\end{figure}
+	
+	% \subsubsection{Peak-maps}
+	% Another method of creating a power spectrum involves taking FFTs of time segments as discussed in the previous section and thresholding the FFTs so only frequencies with powers above a certain value will be selected. This process discards the low power frequencies. The motivation for this is to reduce the power contributed by noise. An example of an peak-map can be seen in Figure~\ref{fig:peakmapsEg}
+	
+	% \begin{figure}[h]
+	% 	\centering
+	% 	\includegraphics[width=0.5\textwidth]{images/general/.png}
+	% 	\caption{\textit{R-mode peak map:} plot of the thresholded frequency vs time of the r-mode signal, colored by the power of the signal frequency. The power is what has been used to do the thresholding. The plot on the right is a peak map of data containing a r-mode signal and noise, the plot on the left is a peak map of data containing only noise.}
+	% 	\label{fig:peakmapsEg}
+	% \end{figure}
+	
+	
+	\subsection{2D-FFT of Power Spectrum: Fourier-Space Plane}
+	We can take the two-dimensional Fourier transform (2D-FFT) of the time-frequency data to convert the signal in the time-frequency plane to a Fourier plane which is physically meaningless (refer to \cite{2dFFTpaper} for more information on the 2D-FFT).  The 2D-FFT of the time-frequency data provides us with complex numbers for each of the data points of our time-frequency plane. To view the complex numbers of the 2D-FFT space, we can take the absolute value of Fourier space to view the magnitude of the complex number's, or we can extract the phase of the complex number's. In Figure~\ref{fig:2dfft(tfps)}, the top plot is the magnitude of the 2D-FFT of the time-frequency power spectrum of Figure~\ref{fig:tfpsEg}. The bottom plot is the phase of the 2D-FFT values.  
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.3\textwidth]{images/filtering/amp_phase.png}
+		\caption{\textit{Fourier Space of r-mode time-frequency plane:} plot of the magnitude (top) and phase (bottom) of the 2D-FFT of the TFPS of a r-mode signal.}
+		\label{fig:2dfft(tfps)}
+	\end{figure}
+	
+	
+	If we compare the r-mode signal's Fourier space values to Gaussian noise's Fourier space values (shown in Figure~\ref{fig:2dfft(noise)}), we can see that r-mode has distinct values and a shape in the Fourier space. We can use this to help filter the r-mode signal when present with noise and even glitches. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.3\textwidth]{images/filtering/noise_amp_phase.png}
+		\caption{\textit{Fourier Space of noise time-frequency plane:} plot of the magnitude (top) and phase (bottom) of the 2D-FFT of the TFPS of Gaussian noise.}
+		\label{fig:2dfft(noise)}
+	\end{figure}
+	
+	\section{r-mode Parameter Space}
+	Depending on the parameters (such as $\alpha$ and $f_0$) used to simulate the r-mode gravitational wave signal, the shape of the signal in the TFPS and the Fourier space changes. At $\alpha = 1$ and at high source frequencies ($f_0 = 1300\sim1500$), the r-mode TFPS appears to curve. As the source frequency lowers ($f_0 = 800\sim500$), the TFPS curve begins to straighten into a line. If $\alpha$ is decreased, then the TFPS curve begins straightening into a line at even higher frequencies. 
+	
+	The flat lines in the TFPS plane correspond to a vertical line in the Fourier space. As the TFPS line becomes a curve (at higher $f_0$), the vertical line in the Fourier space begins rotating circularly, and the line becomes a set of lines which seem to spread at even higher $f_0$ values.
+	A plot of three r-mode signals with different values for $f_0$ can be seen in Figure~\ref{fig:paramSpace}. The figure demonstrates how at higher $f_0$ values the TFPS has a varying slope while for the lower $f_0$ values the TFPS has a more constant slope.
+	
+	
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{images/general/parmSpace.png}
+		\caption{\textit{Power spectrum, 2D-FFT magnitude and phase for r-mode signals of different $f_0$:} the plots are stacked in the order of $f_0 = 1500$ Hz, $f_0 = 1000$ Hz and $f_0 = 500$ Hz.}
+		\label{fig:paramSpace}
+	\end{figure}
+	
+	
+	\section{Simulating Glitch Signal Data}
+	We developed several signals to model glitches, such as exponentially decaying signals and signals with linearly increasing frequency. The signal that we use to study the effectiveness of the filter is a glitch in the time-amplitude plane that we call an amplitude glitch. This is generated by increasing one point in the time-amplitude plane by a value $\times100$ of the initial amplitude. An example of a TFPS signal with a amplitude glitch added to it can be seen in Figure~\ref{fig:glitch}.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.3\textwidth]{images/filtering/ampGlitch.png}
+		\caption{\textit{Amplitude glitch in signal power spectrum:} plot of a r-mode signal power spectrum with a amplitude glitch injected in the signal.}
+		\label{fig:glitch}
+	\end{figure}
+	
+	
+	\section{Filtering}
+	Figure~\ref{} shows the TFPS of a signal and noise. If the TFPS is considered as just an image, the portion of the image containing the signal can be represented using a small set of low frequencies in a Fourier series. This region in the image with the signal also appears to be continuous. In contrast, the portions of the image with noise can be represented with a large set of frequencies in a Fourier series. The regions with noise appear to be discontinuous. Hence, if a filter were created to extract the low continuous frequencies (a low pass filter) from a TFPS, the signal would be enhanced in comparison to the noise. The low pass filter we use is the magnitude of the 2D-FFT of a signal. 
+	
+	\subsection{Creating Filters}
+	To create filters, we simulated r-mode signal data without any noise and took the 2D-FFT of the power spectrum of the simulated r-mode signal. We then took the magnitude of the grid of 2D-FFT values. This resultant grid is what we used as the filter. We made two categories of filters. The first category of filters were called ideal filters, as they were filters generated with a single r-mode signal in a power spectrum. The second category of filters were called summed filters, as they were filters generated with several r-mode signals added together in a power spectrum. An example of a summed filter and the power spectrum used to generate it can be viewed in Figure~\ref{fig:summedFilter}. It is important to note that the signals added in the power spectrum used to generate the summed filter were made sure not to overlap. Hence, while creating the power spectrum with the signals, if a simulated signal overlapped one already present in the power spectrum, the simulated signal was not added to the power spectrum. This is important because when the 2D-FFT of the power spectrum is taken, if signals are overlapping then the 2D-FFT lose information regarding the distinction of the separate signals. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.3\textwidth]{images/filtering/nineTFPS_ampFilt.png}
+		\caption{\textit{A summed filter and its power spectrum:} plot of a summed filter power spectrum on the top and the summed filter on the bottom. The parameters used to generate the r-mode signals were $\alpha = 1$ and $f_0$ ranging from $1500$ Hz to $810$ Hz.}
+		\label{fig:summedFilter}
+	\end{figure}
+	
+	All the filters and the power spectra used to generate the filters are colored using a blue to red color scheme. This is done to help distinguish filters and their power spectra from the power spectra of signals that we filter (colored with a black to red color scheme).
+	
+	\subsection{Process of Applying a Filter}
+	As discussed in the previous section, the low pass filter we use is the magnitude of the 2D-FFT of a simulated signal. The magnitude 2D-FFT of an image with only a signal is a grid of real values which contains the shape of the signal in the 2D-FFT Fourier space (for example see Figure~\ref{}). Multiplying this filter with the 2D-FFT of an image with a signal and noise, the magnitudes of the Fourier space frequencies corresponding to the signal are increased while the magnitudes of the Fourier space frequencies corresponding to noise are decreased. On taking the resultant grid of complex Fourier space frequencies (complex as the 2D-FFT of the signal and noise image is complex), and applying an inverse 2D-FFT on the grid, we obtain an enhanced image. The process of doing this filtering can be seen in Figure~\ref{fig:filteringProcess}. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.4\textwidth]{images/filtering/filteringProcess.png}
+		\caption{\textit{Process of Filtering:} steps to filter an image containing signal and noise data. The plot at the top is the original image and the plot at the bottom is the enhanced image.}
+		\label{fig:filteringProcess}
+	\end{figure}
+	
+	In the next two sections we discuss the application of the ideal and summed filters to signal data with noise. To evaluate the effectiveness of the filter, an enhancement factor was calculated to compare the power spectrum image before and after the filtering process. The enhancement factor is calculated as 
+	\begin{equation}\label{eq:enhancement}
+	\text{Enhancement Factor} = \frac{\text{Image Quality After}}{\text{Image Quality Before}} \ ,
+	\end{equation} 
+	where the image quality is calculated as 
+	\begin{equation}\label{eq:imageQual}
+	\text{Image Quality} = \frac{\sum(\text{Normalized Image Values $>$ 0.9})}{SNR} \ .
+	\end{equation}
+	In Figure~\ref{fig:filteringProcess}, using Eq.~\ref{eq:enhancement} we get the enhancement factor of $5.96$. This equations for enhancement and image quality need to be refined as they do not function at specific SNR ranges. 
+	
+	At low SNRs where the noise is louder than the signal, the numerator of Eq.~\ref{eq:imageQual} (a rough estimate of the energy of signal in the image) instead calculates energy of noise above a threshold (a threshold of 0.9). Due to this, at low SNRs the image quality is incorrectly over estimated. 
+	
+	
+	At higher SNRs where the signal is louder than the noise, the denominator of Eq.~\ref{eq:imageQual} (a rough estimate of the average energy of the noise), is too high since it is calculated by taking the median of the image. The signal, which is now enhanced, makes this value very high. Hence, the denominator does not match the energy of the noise as desired.
+	
+	An potential method to improve the calculation of the image quality might be to filter the noise data that is added to the signal to make the power spectrum of the signal and noise. This will permit the possibility to calculate the energy of the noise before and after the filtering process.
+	
+	\subsection{Using Ideal Filters}
+	To test the ideal filters, they were applied to the same signal that was used to construct the filter (ideal filtering). The ideal filters were also applied to signals which were different from the signal used to construct the filter (non-ideal filtering). The plots in Figure~\ref{fig:allFilters} show the values of the enhancement for the results of ideal and non ideal filtering of r-mode signal created with $f_0 = 1000, 1400, \text{ and } 1500 \text{ Hz}$ with SNR values ranging from SNR$\sim0-4$. In this section we discuss the results from ideal filtering and non-ideal filtering. 
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.35\textwidth]{images/filtering/EnhancementFactors.png}
+		\caption{\textit{Filtering Enhancements:} plot of the enhancements obtained from summed filtering (dashed lines), ideal filtering (lines with circular markers) and non-ideal filtering (lines with no markers) of r-mode signals with SNRs ranging from 0.2 to 4. The three plots are of r-mode signals generated with $f_0 = 1000$ Hz, $1400$ Hz and $1500$ Hz. Ideal filters appear to work well.}
+		\label{fig:allFilters}
+	\end{figure}
+	
+	
+	\subsubsection{Ideal Filtering}
+	On testing the use of ideal filters on power spectra of noise and signals with the same parameters used to create the filter, it was discovered that filtering with ideal filter proved to enhance the power spectra images. Figure~\ref{fig:allFilters} has plots of the enhancement factors obtained from ideal filtering signals with various SNRs (the lines with the circular markers). 
+	
+	
+	Figure~\ref{fig:allFilters} demonstrates that the images are enhanced after filtering with an ideal filter. The drop-off in enhancement is due to the fact that the image quality for before and after filtering may not be correctly calculated as discussed previously. For example, look at the results of filtering a r-mode signal of $f_0 = 1400$ Hz with an SNR of 3.81 in Figure~\ref{fig:badEnhancementRatioCalculation}. The filtered image only has an enhancement value of 0.37, even though the filtering clearly brightens the signal in comparison to the noise. This value implies that the image has been made worse than it initially was, which is not what actually occurs. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{images/filtering/beforeAfter/badEnhancementCalc.png}
+		\caption{\textit{Ideal filtering of $f_0 =1400$ Hz:} plot of an r-mode of $f_0 =1400$ Hz's power spectrum image before and after filtering. The enhancement is calculated to be 0.37, a value much lower than expected.}
+		\label{fig:badEnhancementRatioCalculation}
+	\end{figure}
+	
+	\subsubsection{Non-Ideal Filtering}
+	Using ideal filters on signals that have different parameters than the filters were used to create has provided insights regarding the robustness of filters. In Figure~\ref{fig:allFilters}, the non ideal filtering is shown by the lines with no markers. Looking at the plot of the 1500 Hz, we can see that the 1500 Hz signal is filtered well with the non ideal filters created with 1400 Hz and 1300 Hz. We think that this is because the nonlinear shape of the signal power spectra of the 1400 Hz and 1300 Hz is similar to the shape of the 1500 Hz signal power spectrum. The enhancement decreases when a filter of 1000 Hz is applied to the 1500 Hz signal. This may because the 1000 Hz's shape is much more linear than 1500 Hz signal's shape. Hence, we think the effectiveness of the filter may be attributed to the shape of the signal in power spectra. 
+	
+	The significance of the signal shape in filtering is demonstrated again by the filtering of the 1000 Hz signal (which has a linear shape in its power spectra). As seen in Figure~\ref{fig:allFilters}, the filters generated using $f_0$ of 1300 Hz, 1400 Hz and 1500 Hz  (which have non linear concave up shapes in their power spectra) have a low enhancement. This low enhancement value is due to the difference in the signal shape for the signal that creates the filter and the signal being filtered. This again demonstrates that the effectiveness of the filter may be attributed to the shape of the signal in power spectra.
+	
+	
+	
+	
+	
+	\subsection{Using Summed Filters}
+	We created two summed filters, one with nine signals and one with four signals (see Figures{} and {} in the appendix). On filtering signals $f_0$ of 1500 Hz, 1400 Hz and 1000 Hz with the summed filters, the resultant enhancement ratio is lower than when their ideal filters were applied. This is because the summed filter consists of both linear and non-linear signal shapes (as discussed in the previous section). The presence of both types of signal shapes (linear and non-linear) causes the enhancement to be decreased. We believe that if only one type of signal shape was used in a summed filter, the filter would better filter signals of the same shape. Hence, it may be important to create two classes of filters (those created with signals with a non-linear shape and those created with signals with a linear shape). A plot of the enhancement factors obtained when using the summed filters is presented in Figure~\ref{fig:allFilters} with the dashed lines. 
+	These plots of the enhancement factor do provide a lot of information, however they may be misleading as we beleive the calculation of the enhancement factor to be inaccurate. If one views the power spectrum before and after the summed filter is applied, in some cases where the enhancement factor is calculated to be low, the filtered image still appears enhanced (for example, look at Figure~\ref{} and {}).
+	
+	
+	\subsection{Filtering signals with glitches}
+	To study the robustness of the filters, we filtered a power spectrum containing a simulated r-mode signal, amplitude glitch and Gaussian noise as shown in Figure~\ref{fig:glitch}. We filtered the power spectrum image with the summed filter shown in Figure~\ref{fig:summedFilter}. The resultant filtered power spectrum image is shown in Figure~\ref{fig:signalEnhanced}. Although the enhancement factor has been calculated to be $0.9$, we think that the image is still enhanced by studying the filtered image. In the filtered image, we see the signal to be much clearer than previously. In fact, after the filtering process the glitch and the signal both appear to be of the same level of loudness. Although the glitch is still present, in the next section we discuss how it may be possible to remove the glitch from the power spectrum. 
+	
+	\subsection{Filtering glitches with glitches}
+	If we create a filter using a glitch signal and use it to filter a power spectrum containing a glitch, signal and noise, we get a filtered power spectrum as shown in Figure~\ref{fig:glitchEnhanced}. This greatly enhances the glitch signal in a power spectrum. Using this enhanced image of the glitch, we can determine the region of the image with high power (which is the glitch signal). This will allow us to remove the region with the glitch in the original power spectrum. Once the glitch is removed, it may be possible to filter the edited power spectrum with an r-mode filter. 
+	
+	
+	\section{Future work and conclusions}
+	Our results have shown us that the filters generated by signals which have a non-linear shape in their power spectrum enhance the power spectrum of data with a signal which also have a non-linear power spectrum shape. Likewise, power spectrum of data containing a signal with a linear shape are filtered well by a filter generated with a signal of a linear shape. Hence, the filtering clearly depends on the shape of the signal being filtered and the shape of the signal used to create the filter. We were able to determine this by visually comparing the power spectra before and after the filtering. To make the process quantitative, we determined an equation for the enhancement of the image, but we believe this equation to be inaccurate. This is because images which have been enhanced have enhancement factors lower than expected. Hence, the enhancement factor calculation needs to be improved. This may be done by analysing the noise and signal separately. We also need to implement a method to remove a glitch from a power spectrum if found.
+	Additionally, this study requires an investigation on the Fourier space and what it means. We have been using just the Fourier space magnitude and not the phase. The phase holds the information regarding the shape of the image (Figure~\ref{fig:phaseImp} shows the significance of the Fourier space's phase). Hence, it may also improve the filtering process if we can utilise the phase of the Fourier space in some way.  
+	
+		\begin{figure}[H!]
+			\centering
+			\includegraphics[width=0.5\textwidth]{images/filtering/importanceOfPhase.png}
+			\caption{\textit{Importance of Phase:} If we take the 2D-FFT of the top two plots we can extract the 2D-FFT's phases and magnitudes. If we do so and construct a new Fourier space plane by matching the phase of one image with the magnitude of another, we can inverse 2D-FFT to get the bottom two plots. The bottom plots show how the phase contains most of the information regarding the shape of the image.}
+			\label{fig:phaseImp}
+		\end{figure}
+	
+	
+	
+	\appendix
+	\section{Filtering results}
+	Here we have some figures and results from filtering. Figures~\ref{fig:1sigFilterEG}-\ref{fig:signalEnhanced} show the results of filtering various signals. The plot on the left is that of the original power spectrum. The plot in the middle is the filtered power spectrum. The plot on the right is that of the signal used to create the filter that was used to filter the power spectrum in the left image of the figure. The last two figures, Figures~\ref{fig:glitchEnhanced}-\ref{fig:signalEnhanced}, show how a signal can be filtered when a glitch is present, and how a glitch can be enhanced so that it is easier to remove. 
+	
+	
+	\begin{figure*}[h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/filtering/beforeAfter/1sig.png}
+		\caption{\textit{description of plot:} plot of }
+		\label{fig:1sigFilterEG}
+	\end{figure*}
+	
+	\begin{figure*}[h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/filtering/beforeAfter/4sig.png}
+		\caption{\textit{description of plot:} plot of }
+		\label{fig:4sigFilterEG}
+	\end{figure*}
+	
+	\begin{figure*}[h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/filtering/beforeAfter/9sig.png}
+		\caption{\textit{description of plot:} plot of }
+		\label{fig:9sigFilterEG}
+	\end{figure*}
+	
+	\begin{figure*}[h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/filtering/beforeAfter/glitchEnhanced.png}
+		\caption{\textit{description of plot:} plot of }
+		\label{fig:glitchEnhanced}
+	\end{figure*}
+	
+	\begin{figure*}[h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/filtering/beforeAfter/signalEnhanced.png}
+		\caption{\textit{description of plot:} plot of }
+		\label{fig:signalEnhanced}
+	\end{figure*}
+	
+	
+	
+	\clearpage
+	
+	\bibliographystyle{unsrt}	
+	\bibliography{bibl}	
+	
+\end{document}
+
+
+
+
+%
+% ****** End of file apssamp.tex ******
